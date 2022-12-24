@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+      <span>Subtrair: {{subtrair()}}</span>   <br>
+      <span>Somar: {{somar()}}</span>   <br>
+      <span>Multiplicar: {{multiplicar()}}</span>   <br>
+      <span>Dividir: {{dividir()}}</span>   <br>
+      <span>Numero Aleatório: {{numeroAleatorio()}}</span>   <br>
+    </div>
+
+    <script>
+        
+       const vm =  new Vue({
+
+            el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+            data: {},
+            methods: {
+                somar: function somar() { // function normal
+                    return 4 + 2;
+                },
+                subtrair: function() { // function anonima
+                    return  4 - 2;
+                },
+
+                multiplicar: () => { // Arrow function
+                    return 4 * 2;
+                },
+
+                dividir() {
+                    return 4 / 2;
+                },
+                
+                numeroAleatorio: function numeroAleatorio() {
+                    return Math.random();
+                }
+
+            }
+        }); 
+
+
+    </script>
+</body>
+</html>
