@@ -8,16 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Olá VueJs liveServer</h1>
 
     <div id="app">
-        <!-- Binding -> Em linguagen de programacao "Binding" significa uma amarracao ou ligacao . Trata-se de uma vonculacao de um nome a um valor ou componemte.   -->
-        {{ mensagen }} <br>
-        Valor total: {{valorTotal}} <br>
-        Logado: {{logado}} <br>
-        Hobbie: {{hobbies[0]}} <br> <!-- Acesso a aarys por notacao de colchetes -->
-        Nome: {{ perfil.nome }} <br>
-        Curso: {{perfil.cursos[0].nome}}
+      <span>Subtrair: {{subtrair()}}</span>   <br>
+      <span>Somar: {{somar()}}</span>   <br>
+      <span>Multiplicar: {{multiplicar()}}</span>   <br>
+      <span>Dividir: {{dividir()}}</span>   <br>
+      <span>Numero Aleatório: {{numeroAleatorio()}}</span>   <br>
     </div>
 
     <script>
@@ -25,27 +22,29 @@
        const vm =  new Vue({
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+            data: {},
+            methods: {
+                somar: function somar() { // function normal
+                    return 4 + 2;
+                },
+                subtrair: function() { // function anonima
+                    return  4 - 2;
+                },
 
-            data: {// Data Guarda Variáveis ou atributos reativos 
-                mensagen: 'Primeiro tempalte controlado pelo VueJs', //String
-                valorTotal: 150.47, //Número
-                logado: false, // booleano
-                hobbies: [
-                    'Dormir',
-                    'Coleciobar vídeo games antigos',
-                    'Correr',
-                    'Trilhas'
-                ],
-                perfil: {
-                    nome: 'Geizielder',
-                    idade: '29',
-                    telefone: 6133270675,
-                    cursos: [
-                        {nome: 'VueJs', cargaHoraria: '43'}
-                    ]
+                multiplicar: () => { // Arrow function
+                    return 4 * 2;
+                },
+
+                dividir() {
+                    return 4 / 2;
+                },
+                
+                numeroAleatorio: function numeroAleatorio() {
+                    return Math.random();
                 }
+
             }
-        }); // vm =  ViewModel geralmet atribuido
+        }); 
 
 
     </script>

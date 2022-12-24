@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Olá VueJs liveServer</h1>
+
+    <div id="app">
+        <!-- Binding -> Em linguagen de programacao "Binding" significa uma amarracao ou ligacao . Trata-se de uma vonculacao de um nome a um valor ou componemte.   -->
+        {{ mensagen }} <br>
+        Valor total: {{valorTotal}} <br>
+        Logado: {{logado}} <br>
+        Hobbie: {{hobbies[0]}} <br> <!-- Acesso a aarys por notacao de colchetes -->
+        Nome: {{ perfil.nome }} <br>
+        Curso: {{perfil.cursos[0].nome}}
+    </div>
+
+    <script>
+        
+       const vm =  new Vue({
+
+            el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+
+            data: {// Data Guarda Variáveis ou atributos reativos 
+                mensagen: 'Primeiro tempalte controlado pelo VueJs', //String
+                valorTotal: 150.47, //Número
+                logado: false, // booleano
+                hobbies: [
+                    'Dormir',
+                    'Coleciobar vídeo games antigos',
+                    'Correr',
+                    'Trilhas'
+                ],
+                perfil: {
+                    nome: 'Geizielder',
+                    idade: '29',
+                    telefone: 6133270675,
+                    cursos: [
+                        {nome: 'VueJs', cargaHoraria: '43'}
+                    ]
+                }
+            }
+        }); // vm =  ViewModel geralmet atribuido
+
+
+    </script>
+</body>
+</html>
