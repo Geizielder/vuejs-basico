@@ -10,15 +10,19 @@
         .verde {
             color: rgba(94, 255, 0, 0.986);
         }
+        .negrito {
+            font-weight: bold;
+            font-size: xx-large;
+        }
     </style>
 </head>
 <body>
 
     <div id="app">
-      <a v-bind:href="site">Site</a>
-      <p v-bind:class="cor">Entedendo a diretiva v-bind</p>
-      <input type="text" v-bind:placeholder="instrucaoPreechimeto" v-bind:value="valor">
-      <input type="checkbox" v-bind:checked="check">
+      <a :href="site">Site</a>
+      <p class="negrito" :class="cor">Entedendo a diretiva </p>
+      <input type="text" :placeholder="instrucaoPreechimeto" :value="valor">
+      <input type="checkbox" :checked="check">
     </div>
 
     <script>
