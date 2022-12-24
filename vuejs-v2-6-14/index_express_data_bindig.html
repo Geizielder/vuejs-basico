@@ -8,21 +8,19 @@
     <title>Document</title>
     <style>
         .verde {
-            color: rgba(94, 255, 0, 0.986);
+            background-color: greenyellow;
         }
-        .negrito {
-            font-weight: bold;
-            font-size: xx-large;
+        .azul {
+            background-color: blue;
+            color: white;
         }
     </style>
 </head>
 <body>
 
     <div id="app">
-      <a :href="site">Site</a>
-      <p class="negrito" :class="cor">Entedendo a diretiva </p>
-      <input type="text" :placeholder="instrucaoPreechimeto" :value="valor">
-      <input type="checkbox" :checked="check">
+     {{ 2 + 2 }}
+     <input type="text" :value="2 + 2" :class=" 1 == 1 ? 'verde' : estilo ">
     </div>
 
     <script>
@@ -31,11 +29,8 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                site: 'https://google.com.br',
-                cor: 'verde',
-                instrucaoPreechimeto: 'Placeholdeer - Diretiva-v-bind',
-                valor: 'Entendendo a diretiva v-bind',
-                check: true
+                mensagem: 'Expressão',
+                estilo: 'azul',
             },
             methods: {}
         }); 
