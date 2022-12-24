@@ -14,7 +14,6 @@
       <span>Somar: {{somar()}}</span>   <br>
       <span>Multiplicar: {{multiplicar()}}</span>   <br>
       <span>Dividir: {{dividir()}}</span>   <br>
-      <span>Numero Aleatório: {{numeroAleatorio()}}</span>   <br>
     </div>
 
     <script>
@@ -22,26 +21,25 @@
        const vm =  new Vue({
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
-            data: {},
+            data: {
+                n1: 10,
+                n2: 5
+            },
             methods: {
                 somar: function somar() { // function normal
-                    return 4 + 2;
+                    return this.n1 + this.n2;
                 },
                 subtrair: function() { // function anonima
-                    return  4 - 2;
+                    return this.n1 - this.n2;
                 },
 
                 multiplicar: () => { // Arrow function
-                    return 4 * 2;
+                    return 4 * 2; // o contexto lexico não permite usar o this nesse contexto.
                 },
 
                 dividir() {
-                    return 4 / 2;
+                    return this.n1 / this.n2;
                 },
-                
-                numeroAleatorio: function numeroAleatorio() {
-                    return Math.random();
-                }
 
             }
         }); 
