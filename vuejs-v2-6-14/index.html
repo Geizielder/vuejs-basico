@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>Document</title>
+    <style>
+        .verde {
+            color: rgba(94, 255, 0, 0.986);
+        }
+    </style>
 </head>
 <body>
 
     <div id="app">
-      <span>Subtrair: {{subtrair()}}</span>   <br>
-      <span>Somar: {{somar()}}</span>   <br>
-      <span>Multiplicar: {{multiplicar()}}</span>   <br>
-      <span>Dividir: {{dividir()}}</span>   <br>
+      <a v-bind:href="site">Site</a>
+      <p v-bind:class="cor">Entedendo a diretiva v-bind</p>
+      <input type="text" v-bind:placeholder="instrucaoPreechimeto" v-bind:value="valor">
+      <input type="checkbox" v-bind:checked="check">
     </div>
 
     <script>
@@ -22,28 +27,14 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                n1: 10,
-                n2: 5
+                site: 'https://google.com.br',
+                cor: 'verde',
+                instrucaoPreechimeto: 'Placeholdeer - Diretiva-v-bind',
+                valor: 'Entendendo a diretiva v-bind',
+                check: true
             },
-            methods: {
-                somar: function somar() { // function normal
-                    return this.n1 + this.n2;
-                },
-                subtrair: function() { // function anonima
-                    return this.n1 - this.n2;
-                },
-
-                multiplicar: () => { // Arrow function
-                    return 4 * 2; // o contexto lexico não permite usar o this nesse contexto.
-                },
-
-                dividir() {
-                    return this.n1 / this.n2;
-                },
-
-            }
+            methods: {}
         }); 
-
 
     </script>
 </body>
