@@ -19,8 +19,10 @@
 <body>
 
     <div id="app">
-     {{ 2 + 2 }}
-     <input type="text" :value="2 + 2" :class=" 1 == 1 ? 'verde' : estilo ">
+        <input type="text"c v-on:keyup="imprimirTexo">
+        <!-- <input type="text" @keyup="imprimirTexo"> Sintax sugar v-on--->
+        <button v-on:click="mensagemAlert">Botão</button>
+        <!-- <button @click="mensagemAlert">Botão</button> Sintax sugar v-on-->
     </div>
 
     <script>
@@ -29,10 +31,16 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                mensagem: 'Expressão',
-                estilo: 'azul',
+               
             },
-            methods: {}
+            methods: {
+                imprimirTexo() {
+                    console.log('teste');
+                },
+                mensagemAlert () {
+                    alert('Mensagem de alerta')
+                }
+            }
         }); 
 
     </script>
