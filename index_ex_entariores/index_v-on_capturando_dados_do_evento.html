@@ -19,9 +19,9 @@
 <body>
 
     <div id="app">
-        <input type="text"c v-on:keyup="imprimirTexo">
+        <input type="text"c v-on:keyup="imprimirTexo('Enviando Parâmetro')">
         <!-- <input type="text" @keyup="imprimirTexo"> Sintax sugar v-on--->
-        <button v-on:click="mensagemAlert">Botão</button>
+        <button v-on:click="mensagemAlert($event, 'text', 100)">Botão</button>
         <!-- <button @click="mensagemAlert">Botão</button> Sintax sugar v-on-->
     </div>
 
@@ -34,11 +34,11 @@
                
             },
             methods: {
-                imprimirTexo() {
-                    console.log('teste');
+                imprimirTexo(t) {
+                    console.log(t);
                 },
-                mensagemAlert () {
-                    alert('Mensagem de alerta')
+                mensagemAlert (evento, p1, p2) {
+                    console.log(evento, p1, p2);
                 }
             }
         }); 
