@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+    <style>
+       .verde {
+            background-color: greenyellow;
+        }
+        .branco {
+            background-color: white;
+        }
+        .azul {
+            background-color: blue;
+            color: white;
+        }
+        .vermelho {
+            background-color: rgb(255, 0, 0);
+            color: white;
+        }
+        .borda {
+            border: 1px solid;
+        }
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+        .div-comum {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+    <a href="http://google.com.br" target="_blank" @click.prevent="previnirComportamentoPadrao()">
+        Link
+    </a>
+    <br>
+    Mensagem: {{ msg }}
+    <hr>
+    <button @click.once="executarUmaVez()">Botão</button>
+    <p>Cliques: {{ cliques }} </p>
+    <hr>
+    <form action="" @submit.prevent.once="previnirUmaVez()">
+        <button type="submit">Enviar</button>
+    </form>
+    <p>Formulário: {{ formulario }} </p>
+    <hr>
+    <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
+    <p>Teclas: {{ teclas }} </p>
+    </div>
+
+    <script>
+        
+       const vm =  new Vue({
+
+            el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+            data: {
+                msg: '',
+                cliques: 0,
+                formulario: '',
+                teclas: '' 
+            },
+            methods: {
+                previnirComportamentoPadrao() {
+                    this.msg = 'Comportamento padrão ativado';
+                },
+                executarUmaVez () {
+                    this.cliques++;
+                },
+                previnirUmaVez () {
+                    this.formulario = 'Previnindo o comportamento padão'
+                },
+                capturandoTeclas (e) {
+                    this.teclas = 'Modificadores encadeados com sucesso.';
+                }
+            }
+        }); 
+
+    </script>
+</body>
+</html>
