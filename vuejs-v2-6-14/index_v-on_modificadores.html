@@ -38,17 +38,22 @@
 <body>
 
     <div id="app">
-       <div class="borda div-principal" :class="cor">
-        Cor: {{cor}}
-        <br>
-        Posição X do Mouse: {{ x }}
-        Posição Y do Mouse: {{ y }}
-       </div>
-            
-       <hr>
-       <div @click="mudarCor('verde')" class="borda div-comum"></div>
-       <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
-       <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
+    <a href="http://google.com.br" target="_blank" @click.prevent="previnirComportamentoPadrao()">
+        Link
+    </a>
+    <br>
+    Mensagem: {{ msg }}
+    <hr>
+    <button @click.once="executarUmaVez()">Botão</button>
+    <p>Cliques: {{ cliques }} </p>
+    <hr>
+    <form action="" @submit.prevent.once="previnirUmaVez()">
+        <button type="submit">Enviar</button>
+    </form>
+    <p>Formulário: {{ formulario }} </p>
+    <hr>
+    <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
+    <p>Teclas: {{ teclas }} </p>
     </div>
 
     <script>
@@ -57,17 +62,23 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-               cor: 'Branco',
-               x: 0,
-               y: 0,
+                msg: '',
+                cliques: 0,
+                formulario: '',
+                teclas: '' 
             },
             methods: {
-                mudarCor(c) {
-                    this.cor = c
+                previnirComportamentoPadrao() {
+                    this.msg = 'Comportamento padrão ativado';
                 },
-                coordenadas(e) {
-                    this.x = e.clientX;
-                    this.y = e.clientY;
+                executarUmaVez () {
+                    this.cliques++;
+                },
+                previnirUmaVez () {
+                    this.formulario = 'Previnindo o comportamento padão'
+                },
+                capturandoTeclas (e) {
+                    this.teclas = 'Modificadores encadeados com sucesso.';
                 }
             }
         }); 
