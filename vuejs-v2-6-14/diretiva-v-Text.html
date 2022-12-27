@@ -15,7 +15,10 @@
 <body>
 
     <div id="app">
-       <div v-html="elementosHTML"></div>
+        <div v-html="elementosHTML"></div>
+        <!-- Ambas as formas retornam o em forma de texto o elemento data elementosHTML -->
+        <div v-text="">{{ elementosHTML }}</div>
+        <div v-text="elementosHTML"></div>
     </div>
 
     <script>
