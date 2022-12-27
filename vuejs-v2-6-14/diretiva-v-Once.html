@@ -15,10 +15,11 @@
 <body>
 
     <div id="app">
-        <div v-html="elementosHTML"></div>
-        <!-- Ambas as formas retornam o em forma de texto o elemento data elementosHTML -->
-        <div v-text="">{{ elementosHTML }}</div>
-        <div v-text="elementosHTML"></div>
+     <p v-once>Saldo Inicial: {{ saldo }}</p>
+     <p>Saldo Atualizado: {{ saldo }}</p>
+     <input type="text" id="valor">
+     <button @click="creditar()">Creditar</button>
+     <button @click="debitar()">Debitar</button>
     </div>
 
     <script>
@@ -27,9 +28,16 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                elementosHTML: '<p><b>Site</b></p><a href="https://google.com.br">Google</a>'
+                saldo: 1100
             },
-            methods: {}
+            methods: {
+               creditar () {
+                this.saldo += parseFloat(valor.value)
+               },
+               debitar () {
+                this.saldo -= parseFloat(valor.value)
+               }
+            }
         });
 
     </script>
