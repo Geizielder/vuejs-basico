@@ -15,11 +15,7 @@
 <body>
 
     <div id="app">
-        <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">Exemplo tooltip</p>
-        <div v-show="exibirTextoAjuda">
-            <h3>Título texto ajuda </h3>
-            <p>Conteúdo texto ajuda</p>
-        </div>
+       <div v-html="elementosHTML"></div>
     </div>
 
     <script>
@@ -28,7 +24,7 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                exibirTextoAjuda: false
+                elementosHTML: '<p><b>Site</b></p><a href="https://google.com.br">Google</a>'
             },
             methods: {}
         });
