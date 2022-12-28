@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+    <style>
+        .bg {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- V-Model ajuda two way data binding (ligação de dados bidirecional)-->
+    <!-- V-Bind ajuda one way data binding (ligação de dados mão unica)-->
+    <div id="app">
+        <textarea name="" id="" cols="30" rows="10" class="bg">
+           {{ paciente }}
+        </textarea>
+        
+        <hr>
+        <!-- <textarea type="text" :value="paciente"  @keyup="setPaciente($event)" cols="30" rows="10">
+
+        </textarea> -->
+        <textarea name="" id="" cols="30" rows="10" v-model="paciente">
+            
+        </textarea>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+
+            el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+            data: {
+                paciente: 'João da Silva'
+            },
+            methods: {
+                setPaciente (e) {
+                    this.paciente = e.target.value
+                }
+            },
+            computed: {}
+            
+        });
+
+    </script>
+</body>
+
+</html>
