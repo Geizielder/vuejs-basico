@@ -15,49 +15,13 @@
 <body>
 
     <div id="app">
-        <ul>
-            <!-- O numero pode ser colocado diretamente ou atraves de um binding com o elemeto data -->
-            <li v-for="c in comentarios">{{ c.id }} - {{ c.comentario }}</li>
-        </ul>
-        <button @click="edicinoarElemento()">Adicionar</button>
-        <button @click="removerElemento()">Remover</button>
-        <button @click="modificarElemento()">Atualizar</button>
-        <hr>
-        <ul>
-            <!-- O numero pode ser colocado diretamente ou atraves de um binding com o elemeto data -->
-            <li v-for="n in numero"> {{ n }} </li>
-        </ul>
-        <ul>
-            <li v-for="(curso, chave) in cursos">{{ chave }} - {{ curso }} </li>
-            <hr>
-            <li v-for="curso, chave in cursos" v-text="chave +' - '+ curso"></li>
-        </ul>
-        <hr>
-        <table border="solid 1px">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(curso, chave) in cursos2">
-                    <td>{{ chave }}</td>
-                    <td>{{ curso.titulo }}</td>
-                    <td> {{ curso.descricao}} </td>
-                </tr>
-            </tbody>
-        </table>
-        <ul>
-            <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px;" :key="p.id">
-                {{ p.publicacao }}
-                <hr>
-                <input type="text">
-            </li>
-        </ul>
-        <button @click="misturarArray()">Misturar Publicações</button>
-
+        <template v-if="saudacao"> <!-- Renderizaçao condicional-->
+            <h1>Boas-vindas</h1>
+            <p>Conteúdo da tag <strong>tamplate</strong></p>
+        </template>
+        <template v-for="n in 10">
+            <p>2 x {{ n }} = {{ n * 2}} </p>
+        </template>
     </div>
 
     <script>
@@ -66,58 +30,10 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                comentarios: [
-                    { id: 1, comentario: 'Olá tudo bem como vai 1?' },
-                    { id: 2, comentario: 'Olá tudo bem como vai 2?' },
-                    { id: 3, comentario: 'Olá tudo bem como vai 3?' }
-                ],
-                numero: 5,
-                cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'SOLID', 'Angular'],
-                cursos2: {
-                    1000: {
-                        titulo: 'Laravel',
-                        descricao: 'Domine o framework mais poderoso do mundo'
-                    },
-                    1001: {
-                        titulo: 'Banco de Dados',
-                        descricao: 'Aprenda os principais bancos de dados relacionais do mercado'
-                    }
-                },
-                publicacoes: [
-                    { id: 1, publicacao: 'Publicação 1' },
-                    { id: 2, publicacao: 'Publicação 2' },
-                    { id: 3, publicacao: 'Publicação 3' },
-                ]
+                saudacao: true
             },
-            methods: {
-                misturarArray() {
-                    let misturado = []
-                    misturado[0] = this.publicacoes[2]
-                    misturado[1] = this.publicacoes[0]
-                    misturado[2] = this.publicacoes[1]
-
-                    this.publicacoes = misturado;
-                },
-                edicinoarElemento() {
-                    // this.comentarios[3]  = { id: 4, comentario: 'Vou muito bem obrigado.'}
-                    // console.log(this.comentarios);
-
-                    // insere um array a uma lista de arrays
-                    this.comentarios.push({ id: 4, comentario: 'Vou muito bem obrigado.' })
-                },
-                removerElemento () {
-                    // remove um array de uma lista 
-                    this.comentarios.pop()
-                },
-                modificarElemento () {
-                    // this.comentarios[1] = { id: 2, comentario: 'Comentário 2 atualizado'}
-                    // this.$set(<array>, <chave>, <novo_valor>)
-
-                    // Atualiza valor de um determinado indice so array
-                    this.$set(this.comentarios, 1, { id: 2, comentario: 'Comentário 2 atualizado'})
-
-                }
-            }
+            methods: {},
+             
         });
 
     </script>
