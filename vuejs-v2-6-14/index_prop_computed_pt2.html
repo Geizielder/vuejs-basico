@@ -23,14 +23,12 @@
         <hr>
         <h4>Último Paciente cadastrado</h4>
         <p v-if="pacientes.length > 0">
-            Paciente: {{ pacientes[pacientes.length -1].nome }}<br>
-            Idade: {{ pacientes[pacientes.length -1].idade }}<br>
-            Plano: {{ pacientes[pacientes.length -1].plano }}<br>
+            {{ ultimoPaciente }}<br>
         </p>
         <hr>
 
         <h4>Pacientes do Plano Ouro</h4>
-        <p v-for="p in pacientes"> {{ p.plano == 'Ouro' ? p.nome :  '' }} </p>
+        <p v-for="p in pacientesPlanoOuro"> {{ p.nome }} </p>
 
         <hr>
         <h4>Pacientes Cadastrados</h4>
@@ -46,21 +44,35 @@
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
                 pacientes: [],
-                
+
             },
             methods: {
-                adicionarPaciente () {
+                adicionarPaciente() {
                     this.pacientes.push({
                         nome: inputNome.value,
                         idade: inputIdade.value,
                         plano: inputPlano.value
                     })
-                    
+
                 },
             },
+            computed: {
+                ultimoPaciente() {
+                    let key = this.pacientes.length - 1;
+                    let txt = '';
+                    txt += 'Paciente: ' + this.pacientes[key].nome;
+                    txt += ', idade: ' + this.pacientes[key].idade;
+                    txt += ', plano: ' + this.pacientes[key].plano;
+
+                    return txt.toUpperCase();
+                },
+                pacientesPlanoOuro () {
+                    return this.pacientes.filter(item => item.plano == 'Ouro');
+                }
+            }
             
         });
-        
+
     </script>
 </body>
 
