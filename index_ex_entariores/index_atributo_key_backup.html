@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(curso, chave) in cursos">{{ chave }} - {{ curso }} </li>
+            <hr>
+            <li v-for="curso, chave in cursos" v-text="chave +' - '+ curso"></li>
+        </ul>
+        <hr>
+        <table border="solid 1px">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(curso, chave) in cursos2">
+                    <td>{{ chave }}</td>
+                    <td>{{ curso.titulo }}</td>
+                    <td> {{ curso.descricao}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px;" :key="p.id">
+                {{ p.publicacao }}
+                <hr>
+                <input type="text">
+            </li>
+        </ul>
+        <button @click="misturarArray()">Misturar Publicações</button>
+
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+
+            el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
+            data: {
+                cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'SOLID', 'Angular'],
+                cursos2: {
+                    1000:{
+                        titulo: 'Laravel', 
+                        descricao: 'Domine o framework mais poderoso do mundo'},
+                    1001:{
+                        titulo: 'Banco de Dados',
+                        descricao: 'Aprenda os principais bancos de dados relacionais do mercado'
+                    }
+                },
+                publicacoes: [
+                    {id: 1, publicacao: 'Publicação 1'},
+                    {id: 2, publicacao: 'Publicação 2'},
+                    {id: 3, publicacao: 'Publicação 3'},
+                ]
+            },
+            methods: {
+                misturarArray () {
+                    let misturado = []
+                    misturado[0] = this.publicacoes[2]
+                    misturado[1] = this.publicacoes[0]
+                    misturado[2] = this.publicacoes[1]
+
+                    this.publicacoes = misturado;
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
