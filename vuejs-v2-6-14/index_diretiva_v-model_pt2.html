@@ -19,9 +19,9 @@
     <!-- V-Model ajuda two way data binding (ligação de dados bidirecional)-->
     <!-- V-Bind ajuda one way data binding (ligação de dados mão unica)-->
     <div id="app">
-        <textarea name="" id="" cols="30" rows="10" class="bg">
+        <p name="" id="" cols="30" rows="10" class="bg">
            {{ paciente }}
-        </textarea>
+        </>
         
         <hr>
         <!-- <textarea type="text" :value="paciente"  @keyup="setPaciente($event)" cols="30" rows="10">
@@ -30,6 +30,28 @@
         <textarea name="" id="" cols="30" rows="10" v-model="paciente">
             
         </textarea>
+        <hr>
+        <input type="radio" value="f" v-model="sexo">Feminino
+        <input type="radio" value="m" v-model="sexo">Masculíno
+        <br> {{ sexo }}
+        <hr>
+        <select v-model="plano">
+            <option value="" disabled>Selecione o Plano</option>
+            <option value="basico 1">Básico 1</option>
+            <option value="basico 2">Básico 2</option>
+            <option value="Master">Master</option>
+        </select>
+        <br> {{ plano }}
+        <hr>
+        <input type="checkbox" value="100" v-model="doencas">Asma
+        <input type="checkbox" value="101" v-model="doencas">Diabetes
+        <input type="checkbox" value="102" v-model="doencas">Rinite
+        <br> {{ doencas }}
+        <hr>
+        <textarea cols="30" rows="10" v-model="diagnostico">
+
+        </textarea>
+        <br>{{ diagnostico }}
     </div>
 
     <script>
@@ -38,7 +60,11 @@
 
             el: '#app ', // # selecionar por Id |  . para selecionar por classe -> como no css
             data: {
-                paciente: 'João da Silva'
+                paciente: 'João da Silva',
+                sexo: '',
+                plano: '',
+                doencas: [],
+                diagnostico: ''
             },
             methods: {
                 setPaciente (e) {
