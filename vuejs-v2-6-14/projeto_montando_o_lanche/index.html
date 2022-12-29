@@ -32,13 +32,13 @@
                 <div class="col-md-6">
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <img src="imagens/padrao/pao_superior.png" alt="" srcset="">
-                            <img src="imagens/padrao/alface.png" alt="" srcset="">
-                            <img src="imagens/padrao/molho.png" alt="" srcset="">
-                            <img src="imagens/padrao/molho.png" alt="" srcset="">
-                            <img src="imagens/padrao/molho.png" alt="" srcset="">
-                            <img src="imagens/padrao/hamburguer.png" alt="" srcset="">
-                            <img src="imagens/padrao/pao_inferior.png" alt="" srcset="">
+                            <img :src="pao[0]" alt="" srcset="">
+                            <img :src="alface" alt="">
+                            <img :src="ketchup" alt="">
+                            <img :src="mostarda" alt="">
+                            <img :src="maionese" alt="">
+                            <img :src="hamburguer" alt="">
+                            <img :src="pao[1]" alt="">
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,27 @@
     </div>
     <script>
         const vm = new Vue({
-            el: '#app'
+            el: '#app',
+            computed: {
+                pao(){
+                    return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
+                },
+                alface() {
+                 return 'imagens/padrao/alface.png'
+                },
+                ketchup() {
+                    return 'imagens/padrao/molho.png'
+                },
+                mostarda() {
+                    return 'imagens/padrao/molho.png'
+                },
+                maionese() {
+                    return 'imagens/padrao/molho.png'
+                },
+                hamburguer() {
+                    return 'imagens/padrao/hamburguer.png'
+                }
+            }
         })
     </script>
 </body>
