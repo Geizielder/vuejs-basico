@@ -28,6 +28,7 @@
 
     <div class="container">
         <div id="app">
+            <!-- Imagem Hamburguer montado -->
             <div class="row">
                 <div class="col-md-6">
                     <div class="row mt-2">
@@ -49,12 +50,13 @@
                             <div class="card">
                                 <div class="card-header">TIPO DO PÃO</div>
                                 <div class="card-body">
+                                    
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio">
+                                        <input class="form-check-input" type="radio" value="gergelim" v-model="inputeTipoPao">
                                         <label class="form-check-label">Gergilim</label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio">
+                                        <input class="form-check-input" type="radio" value="australiano" v-model="inputeTipoPao">
                                         <label class="form-check-label">Australiano</label>
                                     </div>
                                 </div>
@@ -130,9 +132,19 @@
     <script>
         const vm = new Vue({
             el: '#app',
+            data: {
+                inputeTipoPao: ''
+            },
             computed: {
                 pao(){
-                    return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
+                    switch(this.inputeTipoPao){
+                        case 'gergelim':
+                            return ['imagens/pao_gergelim_superior.png', 'imagens/pao_gergelim_inferior.png']
+                        case 'australiano':
+                            return ['imagens/pao_australiano_superior.png', 'imagens/pao_australiano_inferior.png']
+                        default:
+                                return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
+                    }
                 },
                 alface() {
                  return 'imagens/padrao/alface.png'
